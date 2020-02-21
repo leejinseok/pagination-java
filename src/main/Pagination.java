@@ -43,14 +43,19 @@ public class Pagination {
             end = currentPage + halfOfRest;
 
             if (halfOfRest % 2 != 0) {
-                start += 0.5;
-                end += 0.5;
+                start = (int) Math.ceil(start);
+                end = (int) Math.ceil(end);
             }
         }
 
         for (int i = start; i <= end; i++) {
             range.add(i);
         }
+
+        isPrev = currentPage > 1;
+        isNext =  currentPage < totalPage;
+        first = 1;
+        last = totalPage;
     }
 
     public int getCurrentPage() {
